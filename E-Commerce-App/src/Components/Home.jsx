@@ -1,61 +1,48 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import styles from "./Home.module.css";
+import ErrorBoundary from "./ErrorBoundary";
+import ProductCard from "./ProductCard";
 
-const Home = () => {
+const Home = ({ addToCart }) => {
   const [data, setData] = useState([]);
-  const [errors, setErrors] = useState("");
-  // const [cartData, setCartData] = useState({});
+  const [page, setPage] = useState(1);
 
-  const addToCart = (id) => {
-    console.log(id);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `https://fakestoreapi.com/products?_page=${page}&_limit=500`
+      );
+      const json = await response.json();
+      setData((prevData) => [...prevData, ...json]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const loadMoreData = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const json = await response.json();
-        setData(json);
-      } catch (error) {
-        setErrors(error);
-        console.error(errors);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
-    <div className={styles.homePage}>
-      <div className={styles.heroSection}>
-        {data &&
-          data.map((product) => (
-            <div className={styles.productContainer} key={product.id}>
-              <div className={styles.productInfo}>
-                <img
-                  src={product.image}
-                  alt="product image"
-                  className={styles.image}
-                />
-                <p className={styles.title}>{product.title}</p>
-                <p className={styles.price}>₹{product.price}</p>
-              </div>
-
-              <div className={styles.buttonContainer}>
-                <button
-                  className={styles.buttons}
-                  onClick={() => {
-                    addToCart(product.id);
-                  }}
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          ))}
+    <ErrorBoundary fallBack={<p>Something went wrong</p>}>
+      <div className={styles.homePage}>
+        <ProductCard
+          data={data}
+          addToCart={addToCart}
+          loadMoreData={loadMoreData}
+        />
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
 export default Home;
+
+Home.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
