@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Gluten&family=IBM+Plex+Sans:wght@300;500&family=Lato:wght@300&family=Lora&family=Montserrat&family=Noto+Sans:wght@400;600&family=Onest:wght@400;600&family=Open+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=Poppins:wght@200;300;500;700&family=Roboto+Condensed:wght@400;500&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Ubuntu:wght@400;500&display=swap');
+
+:root {
+  --font-family: 'Roboto Condensed', sans-serif;
+  --black-background : #000000;
+  --grey-background : #3f3e3e;
+  --whitishGrey-background : #f4f4f4;
+}
+
 .heroSection {
   height: 100%;
   width: 100%;
@@ -46,11 +55,11 @@
 .title {
   font-size: 1rem;
   font-weight: 500;
-  font-family: var(--whitishGrey-background);
+  font-family: var(--font-family);
 }
 
 .price {
-  font-family: var(--whitishGrey-background);
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 1.2rem;
 }
@@ -62,7 +71,7 @@
   color: #ffffff;
   font-size: 1.2rem;
   letter-spacing: 0.1rem;
-  font-family: var(--whitishGrey-background);
+  font-family: var(--font-family);
   cursor: pointer;
   margin-top: 0.3rem;
 }

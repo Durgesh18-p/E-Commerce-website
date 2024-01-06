@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styles from "./ProductCard.module.css";
@@ -31,8 +29,8 @@ const ProductCard = ({ data, addToCart, loadMoreData }) => {
   return (
     <div className={styles.heroSection} ref={containerRef}>
       {data &&
-        data.map((product) => (
-          <div className={styles.productContainer} key={product.id}>
+        data.map((product, index) => (
+          <div className={styles.productContainer} key={index}>
             <div className={styles.productInfo}>
               <img
                 src={product.image}
@@ -46,7 +44,7 @@ const ProductCard = ({ data, addToCart, loadMoreData }) => {
               <button
                 className={styles.buttons}
                 onClick={() => {
-                  addToCart(product.id);
+                  addToCart(index);
                 }}
               >
                 Add to cart
