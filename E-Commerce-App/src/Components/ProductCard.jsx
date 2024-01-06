@@ -44,7 +44,7 @@ const ProductCard = ({ data, addToCart, loadMoreData }) => {
               <button
                 className={styles.buttons}
                 onClick={() => {
-                  addToCart(index);
+                  addToCart(product.id);
                 }}
               >
                 Add to cart

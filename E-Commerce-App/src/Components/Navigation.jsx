@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import styles from "./Navigation.module.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Navigation = () => {
+const Navigation = ({ lengths }) => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
@@ -13,7 +14,7 @@ const Navigation = () => {
       <div className={styles.iconDiv}>
         <Link to="/cart" className={styles.link}>
           <FaShoppingCart className={styles.cartIcon} />
-          <span className={styles.cart}>0</span>
+          <span className={styles.cart}>{lengths && lengths}</span>
           <span className={styles.cart}>Items</span>
         </Link>
       </div>

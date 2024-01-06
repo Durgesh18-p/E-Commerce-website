@@ -84,7 +84,6 @@
 }
 
 .priceCalculater{
-  background-color: var(--whitishGrey-background);
   width: 40%;
   height: 300px;
   position: fixed;
@@ -111,3 +110,4 @@
   font-weight: 500;
   font-family: var(--font-family);
 }
+

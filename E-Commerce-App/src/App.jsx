@@ -5,11 +5,9 @@ import Cart from "./Components/Cart";
 import { useEffect, useState } from "react";
 
 function App() {
-  const addToCart = (id) => {
-    console.log(id);
-  };
-
   const [data, setData] = useState([]);
+  const [indexes, setIndexes] = useState([]);
+  const [length, setLength] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,12 +23,20 @@ function App() {
     fetchData();
   }, []);
 
+  const addToCart = (id) => {
+    setIndexes([id, ...indexes]);
+  };
+
+  useEffect(() => {
+    setLength(indexes.length);
+  }, [indexes]);
+
   return (
     <>
-      <Navigation></Navigation>
+      <Navigation lengths={length}></Navigation>
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} data={data} />} />
-        <Route path="/cart" element={<Cart data={data} />} />
+        <Route path="/cart" element={<Cart data={data} indexes={indexes} />} />
       </Routes>
     </>
   );
