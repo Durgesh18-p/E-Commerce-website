@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import styles from "./Navigation.module.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
@@ -23,3 +23,7 @@ const Navigation = ({ lengths }) => {
 };
 
 export default Navigation;
+
+Navigation.propTypes = {
+  lengths: PropTypes.any.isRequired,
+};
