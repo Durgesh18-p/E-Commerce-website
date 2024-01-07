@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Gluten&family=IBM+Plex+Sans:wght@300;500&family=Lato:wght@300&family=Lora&family=Montserrat&family=Noto+Sans:wght@400;600&family=Onest:wght@400;600&family=Open+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=Poppins:wght@200;300;500;700&family=Roboto+Condensed:wght@400;500&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Ubuntu:wght@400;500&display=swap');
+
+:root {
+  --font-family: 'Roboto Condensed', sans-serif;
+  --black-background : #000000;
+  --grey-background : #3f3e3e;
+  --whitishGrey-background : #f4f4f4;
+  --white-color : #ffffff;
+}
+
+.priceCalculater{
+  width: 40%;
+  height: 300px;
+  position: fixed;
+  float: sticky;
+  z-index: 100;
+  left: 56%;
+  top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.priceDetails {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-family);
+}
+
+.totalPrice{
+  color: var(--white-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-family);
+}
+
+.buttons {
+  background-color: var(--black-background);
+  padding: 0.5rem;
+  width: 200px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  font-family: var(--font-family);
+  cursor: pointer;
+  margin: 0.3rem;
+}
