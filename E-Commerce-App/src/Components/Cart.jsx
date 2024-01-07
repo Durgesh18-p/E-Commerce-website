@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import styles from "./Cart.module.css";
 import AddedProducts from "./AddedProducts";
@@ -34,4 +33,6 @@ Cart.propTypes = {
   data: PropTypes.any.isRequired,
   indexes: PropTypes.any.isRequired,
   handleRemoveProduct: PropTypes.func.isRequired,
+  totalPrice: PropTypes.any.isRequired,
+  setTotalPrice: PropTypes.any.isRequired,
 };

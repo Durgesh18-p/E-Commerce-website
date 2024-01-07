@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from "./PriceCalculator.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";

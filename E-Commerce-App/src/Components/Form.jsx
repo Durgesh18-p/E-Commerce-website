@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import styles from "./Form.module.css";
 import { useRef, useState } from "react";
 
@@ -71,7 +71,9 @@ const Form = ({ totalPrice }) => {
       {showPopup && (
         <div className={styles.overlay}>
           <div className={styles.popup}>
-            <p className={styles.input}>Your payment was successful! Thank you.</p>
+            <p className={styles.input}>
+              Your payment was successful! Thank you.
+            </p>
             <button onClick={closePopup}>Close</button>
           </div>
         </div>
@@ -81,3 +83,7 @@ const Form = ({ totalPrice }) => {
 };
 
 export default Form;
+
+Form.propTypes = {
+  totalPrice: PropTypes.any.isRequired,
+};
