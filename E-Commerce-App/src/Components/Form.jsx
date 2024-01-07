@@ -62,8 +62,8 @@ const Form = ({ totalPrice }) => {
             <textarea
               name="address"
               id="address"
-              cols="25"
-              rows="8"
+              cols="20"
+              rows="5"
               ref={address}
               className={styles.address}
               placeholder="Enter address..."
