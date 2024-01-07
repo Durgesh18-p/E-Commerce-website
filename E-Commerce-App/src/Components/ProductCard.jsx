@@ -23,7 +23,7 @@ const ProductCard = ({ data, addToCart }) => {
                   addToCart(product.id - 1);
                 }}
               >
-                Add to cart
+                Add to Cart
               </button>
             </div>
           </div>

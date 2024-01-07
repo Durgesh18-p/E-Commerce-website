@@ -48,4 +48,5 @@
   font-family: var(--font-family);
   cursor: pointer;
   margin: 0.3rem;
+  text-decoration: none;
 }

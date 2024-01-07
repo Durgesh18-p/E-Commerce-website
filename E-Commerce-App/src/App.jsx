@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Navigation from "./Components/Navigation";
 import Cart from "./Components/Cart";
+import Form from "./Components/Form";
 import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
   const [indexes, setIndexes] = useState([]);
   const [length, setLength] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +26,9 @@ function App() {
   }, []);
 
   const addToCart = (id) => {
-    setIndexes((prevIndexes) => [id, ...prevIndexes]);
-    console.log(id);
+    if (!indexes.includes(id)) {
+      setIndexes((prevIndexes) => [id, ...prevIndexes]);
+    }
   };
 
   useEffect(() => {
@@ -50,9 +53,12 @@ function App() {
               data={data}
               indexes={indexes}
               handleRemoveProduct={handleRemoveProduct}
+              totalPrice={totalPrice}
+              setTotalPrice={setTotalPrice}
             />
           }
         />
+        <Route path="/form" element={<Form totalPrice={totalPrice} />} />
       </Routes>
     </>
   );

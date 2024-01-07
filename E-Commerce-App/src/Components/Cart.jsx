@@ -1,9 +1,16 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import styles from "./Cart.module.css";
 import AddedProducts from "./AddedProducts";
 import PriceCalculator from "./PriceCalculator";
 
-const Cart = ({ data, indexes, handleRemoveProduct }) => {
+const Cart = ({
+  data,
+  indexes,
+  handleRemoveProduct,
+  totalPrice,
+  setTotalPrice,
+}) => {
   const cartItems = indexes.map((index) => data[index]);
 
   return (
@@ -11,9 +18,12 @@ const Cart = ({ data, indexes, handleRemoveProduct }) => {
       <AddedProducts
         cartItems={cartItems}
         handleRemoveProduct={handleRemoveProduct}
-        // removeIndex={removeIndex}
       />
-      <PriceCalculator cartItems={cartItems} />
+      <PriceCalculator
+        cartItems={cartItems}
+        totalPrice={totalPrice}
+        setTotalPrice={setTotalPrice}
+      />
     </div>
   );
 };
