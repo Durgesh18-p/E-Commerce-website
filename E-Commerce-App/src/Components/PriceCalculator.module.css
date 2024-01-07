@@ -38,15 +38,28 @@
   font-family: var(--font-family);
 }
 
+.buttonContainer{
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .buttons {
   background-color: var(--black-background);
   padding: 0.5rem;
-  width: 200px;
-  color: #ffffff;
+  color: var(--white-color);
   font-size: 1.1rem;
   letter-spacing: 0.1rem;
   font-family: var(--font-family);
   cursor: pointer;
   margin: 0.3rem;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .priceCalculater {
+    margin-left: 0.5rem;
+  }
 }

@@ -4,7 +4,7 @@
   --font-family: 'Roboto Condensed', sans-serif;
   --black-background : #000000;
   --grey-background : #3f3e3e;
-  --whitishGrey-background : #f4f4f4;
+  --whitishGrey-background : #63b7df;
 }
 
 .heroSection {
@@ -56,6 +56,8 @@
   font-size: 1rem;
   font-weight: 500;
   font-family: var(--font-family);
+  padding: 1rem;
+  background-color: rgb(211, 232, 240);
 }
 
 .price {

@@ -14,7 +14,7 @@ const Navigation = ({ lengths }) => {
       <div className={styles.iconDiv}>
         <Link to="/cart" className={styles.link}>
           <FaShoppingCart className={styles.cartIcon} />
-          <span className={styles.cart}>{lengths && lengths}</span>
+          <span className={styles.carts}>{lengths && lengths}</span>
           <span className={styles.cart}>Items</span>
         </Link>
       </div>
