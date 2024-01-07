@@ -24,19 +24,35 @@ function App() {
   }, []);
 
   const addToCart = (id) => {
-    setIndexes([id, ...indexes]);
+    setIndexes((prevIndexes) => [id, ...prevIndexes]);
+    console.log(id);
   };
 
   useEffect(() => {
     setLength(indexes.length);
   }, [indexes]);
 
+  const handleRemoveProduct = (id) => {
+    setIndexes((prevIndexes) => prevIndexes.filter((index) => index !== id));
+    console.log(indexes);
+    console.log(id);
+  };
+
   return (
     <>
       <Navigation lengths={length}></Navigation>
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} data={data} />} />
-        <Route path="/cart" element={<Cart data={data} indexes={indexes} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              data={data}
+              indexes={indexes}
+              handleRemoveProduct={handleRemoveProduct}
+            />
+          }
+        />
       </Routes>
     </>
   );
