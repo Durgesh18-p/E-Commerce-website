@@ -1,8 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Components/Home";
 import Navigation from "./Components/Navigation";
 import Cart from "./Components/Cart";
 import Form from "./Components/Form";
+import Login from "./Components/Login";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -10,6 +11,23 @@ function App() {
   const [indexes, setIndexes] = useState([]);
   const [length, setLength] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [user, setUser] = useState(null);
+  const [popup, setPopup] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmit = (e, email, password) => {
+    e.preventDefault();
+    if (email === "" && password === "") {
+      setShowPopup(true);
+      setPopup("Fill in all the fields");
+    } else {
+      setUser((prevUser) => ({
+        ...prevUser,
+        email: email,
+        password: password,
+      }));
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +59,26 @@ function App() {
     console.log(id);
   };
 
+  if (!user) {
+    return (
+      <>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Login
+                handleSubmit={handleSubmit}
+                popup={popup}
+                showPopup={showPopup}
+              ></Login>
+            }
+          />
+          {console.log("Rendering login page")}
+        </Routes>
+      </>
+    );
+  }
+
   return (
     <>
       <Navigation lengths={length}></Navigation>
@@ -59,6 +97,8 @@ function App() {
           }
         />
         <Route path="/form" element={<Form totalPrice={totalPrice} />} />
+        <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
