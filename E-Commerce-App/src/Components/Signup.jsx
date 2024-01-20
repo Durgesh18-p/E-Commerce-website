@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import styles from "./Login.module.css";
 import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import styles from "./Signup.module.css";
 
-const Login = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
+const Signup = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
   const email = useRef("");
   const password = useRef("");
 
@@ -16,17 +15,17 @@ const Login = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
       return () => clearTimeout(timeoutId);
     }
   }, [popup, setShowPopup]);
-
   return (
     <div className={styles.loginContainer}>
       {showPopup && <p className={styles.popup}>{popup}</p>}
       <p className={styles.heading}>
-        Login to &ldquo;<span className={styles.brand}>Bought or Not</span>
+        Sign Up for &ldquo;<span className={styles.brand}>Bought or Not</span>
         &rdquo;
       </p>
       <div className={styles.formContainer}>
         <form action="#" className={styles.form}>
           <div className={styles.inputContainer}>
+            <input type="text" placeholder="name..." className={styles.input} />
             <input
               type="email"
               placeholder="email..."
@@ -57,19 +56,13 @@ const Login = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
                 )
               }
             >
-              Login
+              SignUp
             </button>
           </div>
         </form>
-      </div>
-      <div className={styles.signupContainer}>
-        <p className={styles.signup}>New to &ldquo;Bought or Not&ldquo;</p>
-        <p>
-          <Link to="/signup">SignUp</Link>
-        </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

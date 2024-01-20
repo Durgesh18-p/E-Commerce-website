@@ -3,7 +3,7 @@ import styles from "./Form.module.css";
 import { useRef, useState } from "react";
 import image from "../Assets/bag.jpg";
 
-const Form = ({ totalPrice }) => {
+const Form = ({ totalPrice, setLength }) => {
   const finalPrice = useRef(totalPrice);
   const formRef = useRef(null);
   const name = useRef("");
@@ -95,7 +95,10 @@ const Form = ({ totalPrice }) => {
             <button
               className={styles.buttons}
               type="submit"
-              onClick={(e) => onSubmit(e)}
+              onClick={(e) => {
+                onSubmit(e);
+                setLength(0);
+              }}
             >
               Pay
             </button>
@@ -105,7 +108,8 @@ const Form = ({ totalPrice }) => {
           <div className={styles.overlay}>
             <div className={styles.popup}>
               <p className={styles.inputs}>
-                Your payment was successful! Thank you. 🙏
+                Your payment was successful! Product will be delivered within 2
+                days. Thank you. 🙏
               </p>
               <div className={styles.info}>
                 <p className={styles.inputs}>Name: {formData.name}</p>
@@ -127,4 +131,5 @@ export default Form;
 
 Form.propTypes = {
   totalPrice: PropTypes.any.isRequired,
+  setLength: PropTypes.any.isRequired,
 };

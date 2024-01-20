@@ -4,6 +4,7 @@ import Navigation from "./Components/Navigation";
 import Cart from "./Components/Cart";
 import Form from "./Components/Form";
 import Login from "./Components/Login";
+import Signup from "./Components/Signup";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -55,27 +56,33 @@ function App() {
 
   const handleRemoveProduct = (id) => {
     setIndexes((prevIndexes) => prevIndexes.filter((index) => index !== id));
-    console.log(indexes);
-    console.log(id);
   };
 
   if (!user) {
     return (
-      <>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Login
-                handleSubmit={handleSubmit}
-                popup={popup}
-                showPopup={showPopup}
-              ></Login>
-            }
-          />
-          {console.log("Rendering login page")}
-        </Routes>
-      </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Login
+              handleSubmit={handleSubmit}
+              popup={popup}
+              showPopup={showPopup}
+            />
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Signup
+              handleSubmit={handleSubmit}
+              popup={popup}
+              setShowPopup={setShowPopup}
+              showPopup={showPopup}
+            />
+          }
+        />
+      </Routes>
     );
   }
 
@@ -84,6 +91,7 @@ function App() {
       <Navigation lengths={length}></Navigation>
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} data={data} />} />
+
         <Route
           path="/cart"
           element={
@@ -96,8 +104,10 @@ function App() {
             />
           }
         />
-        <Route path="/form" element={<Form totalPrice={totalPrice} />} />
-        <Route path="/login" element={<Login handleSubmit={handleSubmit} />} />
+        <Route
+          path="/form"
+          element={<Form totalPrice={totalPrice} setLength={setLength} />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
