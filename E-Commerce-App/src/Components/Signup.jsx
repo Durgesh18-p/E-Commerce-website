@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import styles from "./Signup.module.css";
 
@@ -66,3 +66,10 @@ const Signup = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
 };
 
 export default Signup;
+
+Signup.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  popup: PropTypes.string.isRequired,
+  setShowPopup: PropTypes.func.isRequired,
+  showPopup: PropTypes.bool.isRequired,
+};

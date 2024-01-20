@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import styles from "./Login.module.css";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -73,3 +73,10 @@ const Login = ({ handleSubmit, popup, setShowPopup, showPopup }) => {
 };
 
 export default Login;
+
+Login.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  popup: PropTypes.string.isRequired,
+  setShowPopup: PropTypes.func.isRequired,
+  showPopup: PropTypes.bool.isRequired,
+};
